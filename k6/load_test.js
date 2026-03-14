@@ -10,7 +10,7 @@ export const options = {
   },
 };
 
-export default function () {
+export default function loadTest() {
   const res = http.get('http://localhost:3000/');
   check(res, {
     'status is 200': (r) => r.status === 200,
