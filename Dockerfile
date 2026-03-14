@@ -6,7 +6,11 @@ COPY package*.json ./
 
 RUN npm install --production
 
-COPY . .
+COPY app.js ./
+COPY bin/ ./bin/
+COPY routes/ ./routes/
+COPY public/ ./public/
+COPY lib/ ./lib/
 
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
