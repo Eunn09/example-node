@@ -128,11 +128,7 @@ jobs:
             docker stop my-node-app || true
             docker rm my-node-app || true
             docker pull $IMAGE
-            docker run -d \
-              --name my-node-app \
-              -p 3000:3000 \
-              --restart always \
-              $IMAGE
+            docker run -d --name my-node-app -p 3000:3000 --restart always $IMAGE
               --restart always \
               ghcr.io/${{ github.repository }}:master000 \
               --restart always \
