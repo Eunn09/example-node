@@ -77,7 +77,7 @@ jobs:
           done
           
           # Correr K6
-          docker run --rm --network host grafana/k6 run - < k6/load_test.js
+          docker run --rm --network host -v ${{ github.workspace }}/k6:/k6 grafana/k6 run /k6/load_test.js
           
           # Detener la app
           kill $APP_PID || true
