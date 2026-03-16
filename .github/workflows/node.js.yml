@@ -65,11 +65,12 @@ jobs:
         run: npm install
       - name: Start app in background
         run: |
-          PORT=3000 npm start > /tmp/app.log 2>&1 &
-          echo "App PID: $!"
+          nohup PORT=3000 npm start > /tmp/app.log 2>&1 &
+          echo $! > /tmp/app.pid
+          echo "App PID: $(cat /tmp/app.pid)"
       - name: Wait for app to start
         run: |
-          sleep 8
+          sleep 10
           cat /tmp/app.log
       - name: Verify app is running
         run: |
