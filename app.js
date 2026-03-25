@@ -39,8 +39,10 @@ const activeUsersGauge = new client.Gauge({
 });
 
 // Simular usuarios activos aleatorios
+let userCount = 0;
 setInterval(() => {
-  activeUsersGauge.set(Math.floor(Math.random() * 100));
+  userCount = (userCount + Math.floor(userCount * 0.1) + 1) % 100;
+  activeUsersGauge.set(userCount);
 }, 5000);
 
 app.use(logger('dev'))
